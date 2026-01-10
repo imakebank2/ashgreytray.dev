@@ -444,29 +444,28 @@ nav ul li a {
 }
 
 /* PICTURES TAB */
-.row,
-.img-container {
+.row {
     margin: 1.5em 0;
     display: flex;
-    gap: 1.5em; 
-    flex-wrap: nowrap;
-    overflow-x: auto; 
-    align-items: flex-start; 
+    gap: 1.5em;
+    flex-wrap: nowrap;       /* keeps images in one row */
+    overflow-x: auto;        /* scroll if too wide */
+    align-items: flex-start; /* align all images to top */
 }
 
 .img-container {
     position: relative;
-    flex: none; 
+    display: inline-block; /* shrink to fit image */
 }
 
 .img-container img {
-    display: block; 
-    width: auto; 
-    height: auto; 
-    object-fit: none;
-    user-select: none;
-    transition: filter 0.3s ease-in-out;
+    display: block;   /* remove inline spacing */
+    width: auto;      /* natural width */
+    height: auto;     /* natural height */
+    max-width: none;  /* prevent scaling down */
+    object-fit: unset; /* prevent browser zoom/stretch */
 }
+
 
 .img-desc {
 	position: absolute;
