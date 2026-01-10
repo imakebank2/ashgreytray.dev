@@ -1,9 +1,9 @@
 export const CONFIG = {
-	defaultTheme: 'winter',
+	defaultTheme: 'terminal',
 	seasonalTheme: false, // will change the default theme based on the date
 
 	// effects
-	effectsDisabledByDefault: false,
+	effectsDisabledByDefault: true,
 	effectsDisabledByDefaultMobile: true,
 	displayEffectsSwitch: true,
 
