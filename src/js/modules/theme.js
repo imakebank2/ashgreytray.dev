@@ -135,7 +135,7 @@ export function initTheme() {
 		const month = date.getMonth(); // returns value between 0 and 11
 
 		// winter
-		if (month === 11 || month === 0) {
+		if (month === 11 || month === 0 || month === 1 || month === 2 || month === 3 || month === 4 || month === 5 || month === 6 || month === 7 || month === 8 || month === 9 || month === 10) {
 			THEME = Object.keys(THEMES).includes('winter') ? 'winter' : THEME;
 		}
 	}
