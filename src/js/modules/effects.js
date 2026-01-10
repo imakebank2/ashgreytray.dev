@@ -36,7 +36,7 @@ export function initEffectsToggle() {
 		document.getElementById('toggle-effects').style.display = 'none';
 	} else {
 		const nfbText = document.getElementById('toggle-effects');
-		nfbText.innerHTML = `Don't like the effects? Click <a id="toggle-effects-link" href="#">HERE</a> to turn them ${
+		nfbText.innerHTML = `Want to toggle the fancy effects? Click <a id="toggle-effects-link" href="#">HERE</a> to turn them ${
 			effectsDisabled ? 'on' : 'off'
 		}.`;
 
