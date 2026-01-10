@@ -450,19 +450,23 @@ nav ul li a {
     display: flex;
     gap: 1.5em; 
     flex-wrap: nowrap;
-	overflow-x: auto; 
-	overflow-y: auto; 
+    overflow-x: auto; 
+    align-items: flex-start; 
+}
+
+.img-container {
+    position: relative;
+    flex: none; 
 }
 
 .img-container img {
-    flex: none;     
-    width: auto;    
-    height: auto;    
-    object-fit: none; 
+    display: block; 
+    width: auto; 
+    height: auto; 
+    object-fit: none;
     user-select: none;
     transition: filter 0.3s ease-in-out;
 }
-
 
 .img-desc {
 	position: absolute;
