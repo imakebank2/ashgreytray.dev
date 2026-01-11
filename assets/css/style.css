@@ -36,14 +36,26 @@ html {
 	overflow-x: hidden;
 }
 
-.example::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
-
+/* Hide scrollbar for IE, Edge and Firefox */
 .example {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+.container {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.container::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 
 body {
@@ -715,5 +727,6 @@ nav ul li a {
 
 	text-decoration: none;
 }
+
 
 
