@@ -6,6 +6,8 @@
 	font-display: swap;
 }
 
+
+
 :root {
 	/* Theme colors */
 	/* Only used as fallback, will be overwritten (consider editing these values in /src/js/modules/theme.js) */
@@ -34,6 +36,16 @@ html {
 	overflow-x: hidden;
 }
 
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 body {
 	color: var(--main-color);
 	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(var(--bg-color), 0.2) 250%),
@@ -43,8 +55,7 @@ body {
 	height: 100vh;
 	width: 100vw;
 
-	overflow-y: hidden; /* Hide vertical scrollbar */
-  	overflow-x: hidden; /* Hide horizontal scrollbar */
+	overflow-y: auto;
 	scroll-behavior: smooth;
 
 	font-family: 'Terminus', 'Courier New', monospace;
@@ -704,4 +715,5 @@ nav ul li a {
 
 	text-decoration: none;
 }
+
 
