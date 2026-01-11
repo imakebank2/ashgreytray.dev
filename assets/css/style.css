@@ -43,7 +43,8 @@ body {
 	height: 100vh;
 	width: 100vw;
 
-	overflow-y: auto;
+	overflow-y: hidden; /* Hide vertical scrollbar */
+  	overflow-x: hidden; /* Hide horizontal scrollbar */
 	scroll-behavior: smooth;
 
 	font-family: 'Terminus', 'Courier New', monospace;
@@ -703,3 +704,4 @@ nav ul li a {
 
 	text-decoration: none;
 }
+
