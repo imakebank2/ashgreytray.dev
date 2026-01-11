@@ -1,5 +1,5 @@
 export const CONFIG = {
-	defaultTheme: 'terminal',
+	defaultTheme: 'winter',
 	seasonalTheme: false, // will change the default theme based on the date
 
 	// effects
@@ -23,4 +23,5 @@ export const CONFIG = {
 	writeAnimationOnPostOpen: true,
 	showEstimatedReadTime: true,
 };
+
 
