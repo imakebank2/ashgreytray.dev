@@ -444,54 +444,22 @@ nav ul li a {
 }
 
 /* PICTURES TAB */
-.carousel {
-    position: relative;
-    width: 100%;
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%); 
+  user-select: none; /* -- Prevent image highlighting -- */
 }
 
-.carousel-viewport {
-    overflow: hidden;   /* forces carousel behaviour */
-    width: 100%;
+#image-track > .image {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
 }
-
-.carousel-track {
-    display: flex;
-    gap: 1.5em;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.carousel-track::-webkit-scrollbar {
-    display: none;
-}
-
-.img-container {
-    flex: 0 0 auto;
-}
-
-.img-container img {
-    display: block;
-    height: auto;
-    width: auto;
-}
-
-/* Buttons */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    background: rgba(0,0,0,.6);
-    color: #fff;
-    border: none;
-    font-size: 2rem;
-    padding: .2em .6em;
-    cursor: pointer;
-}
-
-.carousel-btn.prev { left: 0; }
-.carousel-btn.next { right: 0; }
 
 #photography .row img:hover {
 	filter: brightness(1.2);
@@ -707,5 +675,6 @@ nav ul li a {
 
 	text-decoration: none;
 }
+
 
 
