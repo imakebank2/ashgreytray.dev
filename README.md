@@ -24,4 +24,5 @@ You're free to copy, modify, distribute, and use the source code, provided that 
 
 - [TAAG](https://patorjk.com/software/taag) by patorjk
 
-Quadeca. (2025, July 25). At A Time Like This [Music]. [Available as vinyl track](https://www.youtube.com/watch?v=y-lXSKRzvvU)
+Brakence. (2022, December 2). Hypochondriac [Music]. [Source](https://www.youtube.com/watch?v=JjBJAfFR-3A&list=PL9tY0BWXOZFtX1e8WOhEn9d7myfqyfgAK&index=13)
+
