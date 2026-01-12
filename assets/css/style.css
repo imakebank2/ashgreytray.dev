@@ -235,6 +235,7 @@ details[open] summary:not(:hover) {
 	display: flex;
 	gap: 0.5em;
 	margin: 0.5em 0;
+	flex-wrap: wrap;
 }
 
 .tag {
@@ -497,7 +498,8 @@ nav ul li a {
 }
 
 .pic-coll:not(:first-of-type) {
-	display: none;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .pic-coll div img {
@@ -720,3 +722,4 @@ body {
 body {
 	-ms-overflow-style: none;
 }
+
