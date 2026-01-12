@@ -39,6 +39,12 @@ function changePictureColl(event, coll) {
 
 export function initPictureColl() {
 	document.querySelectorAll('.pic-coll-tabs').forEach((element) => {
-		element.addEventListener('click', (event) => changePictureColl(event, element.dataset.id));
+		element.addEventListener('click', (event) =>
+			changePictureColl(event, element.dataset.id)
+		);
 	});
+
+	changePictureColl(null, 'Computing');
 }
+
+
