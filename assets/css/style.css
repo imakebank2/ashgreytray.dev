@@ -726,8 +726,7 @@ body {
 .overflow-fix {
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 95%;
-	min-width: 0;
 }
+
 
 
