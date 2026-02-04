@@ -38,6 +38,30 @@
     window.location.replace("#home");
   }
 </script>
+	<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const emailLink = document.getElementById("copyEmail");
+
+  if (!emailLink) return;
+
+  emailLink.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const email = emailLink.dataset.email;
+
+    navigator.clipboard.writeText(email)
+      .then(() => {
+        emailLink.textContent = "Copied!";
+        setTimeout(() => {
+          emailLink.textContent = email;
+        }, 1500);
+      })
+      .catch(err => {
+        console.error("Clipboard failed", err);
+      });
+  });
+});
+	</script>
 </head>
 <body class="no-fouc">
 	<script>
@@ -133,6 +157,7 @@
 								<p class="contact-link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/ashgreytray" target="_blank">GitHub</a></p>
 								<p class="contact-link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://www.instagram.com/ashgreytray/" target="_blank">Instagram</a></p>
 								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i>Discord - ash.flac</p>
+								<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 							</div>
 						</details>
 					</div>
@@ -446,7 +471,7 @@
 				<ul id="pr-list">
 				<li>
 					<p class="pr-title">Contacts below</p>
-					<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="mailto:contact@ashgreytray.dev" target=_blank">contact@ashgreytray.dev</a></p><br>
+					<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 					<p class="pr-desc"><i class="fa-brands fa-linkedin fa-fw"></i><a href="https://www.linkedin.com/in/ash-kaster/" target="_blank">LinkedIn</a></p>
 				</li>
 			</ul>
@@ -566,13 +591,14 @@
 								<p class="contact-link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/ashgreytray" target="_blank">GitHub</a></p>
 								<p class="contact-link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://www.instagram.com/ashgreytray/" target="_blank">Instagram</a></p>
 								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i>Discord - ash.flac</p>
+						
 					</div>
 					<div class="grid-row-box">
 						<h2>Contact</h2>
 						<p>I would prefer Discord for more casual contact: ash.flac for Discord.</p>
 						<br>
 						<p>More professional inquiries can go to:</p>
-						<p><a href="mailto:contact@ashgreytray.dev" target="_blank">contact@ashgreytray.dev</a></p>
+						<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 					</div>
 				</div>
 			</div>
@@ -581,6 +607,7 @@
 </body>
 
 </html>
+
 
 
 
