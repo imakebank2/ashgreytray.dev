@@ -66,6 +66,33 @@ const handleOnMove = e => {
   }
 }
 
+function updateAEST() {
+  const now = new Date();
+
+  // Convert local time → UTC → AEST (UTC +10)
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const aest = new Date(utc + (10 * 60 * 60 * 1000));
+
+  const formatted = aest.toLocaleString("en-AU", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+
+  document.getElementById("aestTime").textContent = formatted + " AEST";
+}
+
+// initial render
+updateAEST();
+
+// update every second
+setInterval(updateAEST, 1000);
+
+
 /* -- Had to add extra lines for touch events -- */
 
 window.onmousedown = e => handleOnDown(e);
@@ -108,4 +135,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.getElementById('grunge-overlay').style.display = 'none';
 	}
 });
+
 
