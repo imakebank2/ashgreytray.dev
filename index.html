@@ -14,6 +14,9 @@
 
 	<link rel="preload" as="font" href="/assets/fonts/terminus-webfont.woff2" type="font/woff2" crossorigin="anonymous">
 
+	<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
 	<link rel="stylesheet" href="/assets/css/style.css?v=4"> <!-- increase version after significant changes to prevent browsers from using a old cached version (cache busting) -->
 
 	<meta property="og:title" content="ashgreytray">
@@ -488,6 +491,18 @@ document.addEventListener("DOMContentLoaded", () => {
 					<p class="pr-desc">Binary exploitation is all about finding vulnerabilities and using them for your purpose. In the introduction here, the array is given to you, in this particular example you can observe the following, obviously chmod +x "file" to format and ./"file" to run the CTF:</p> <br>
 					<p class="pr-desc">Notice that in this binary, the auth variable sits perfectly after our buf array. This isn't always the case, but you can use Binary Ninja to check it! Using scanf with %s is extremely unsafe, as it lets us write as much data as we want. Your goal is to overflow buf and overwrite the auth variable.</p>
 					<a><img src="https://ashgreytray.github.io./ctf-assets/1-pwntools1.png"></img></a>
+					<p class="pr-desc">Okay, let's break this down step by step, as the information in the image suggests we have two parts here, one part which is our buf and the second part which is where we want to write our win condition, our auth variable.</p><br>
+					<p class="pr-desc">In order to reach the win condition we have to full the buf with gibberish, since you are writing alphanumerical to ASCII you can write 44 A's to just fill it up.</p><br>
+					<a><img src="https://ashgreytray.github.io./ctf-assets/3-pwntools1.png"></img></a>
+					<p class="pr-desc">After doing that we can see that our 7b has turned into 00. This means we can start writing in the auth variable</p><br>
+					<p class="pr-desc">Since this is meant to introduce you to pwntools, I'll go into how to do this in using that, first you have to run the following</p><br>
+					<pre><code class="language-python">
+python3 -m venv venv
+source ./venv/bin/activate
+pip install pwntools
+</code></pre><br>
+					<p class="pr-desc">After this we can start to use pwntools, doing <pre><code>nano ctf1.py</code></pre> will let you start writing to a python file</p>
+					
 					<div class="tag-list">
 						<p class="tag">PWNTOOLS</p>
 						<p class="tag">UNIX</p>
@@ -628,6 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
